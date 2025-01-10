@@ -39,6 +39,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('Customer') }}</th>
+                            <th>{{ __('Product') }}</th>
                             <th>{{ __('License Key') }}</th>
                             <th>{{ __('Type') }}</th>
                             <th>{{ __('Status') }}</th>
@@ -49,6 +50,7 @@
                         @foreach($recentLicenses as $license)
                         <tr>
                             <td>{{ $license->customer->name }}</td>
+                            <td>{{ $license->product->name }}</td>
                             <td>{{ $license->license_key }}</td>
                             <td>{{ ucfirst($license->type) }}</td>
                             <td>

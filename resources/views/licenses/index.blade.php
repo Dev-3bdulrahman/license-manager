@@ -49,7 +49,6 @@
                             @if($license->status === 'active')
                             <form action="{{ route('license-manager.licenses.suspend', $license) }}" method="POST" class="d-inline">
                                 @csrf
-                                @method('PUT')
                                 <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('{{ __('Are you sure you want to suspend this license?') }}')">
                                     {{ __('Suspend') }}
                                 </button>
@@ -57,7 +56,6 @@
                             @elseif($license->status === 'suspended')
                             <form action="{{ route('license-manager.licenses.reactivate', $license) }}" method="POST" class="d-inline">
                                 @csrf
-                                @method('PUT')
                                 <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('{{ __('Are you sure you want to reactivate this license?') }}')">
                                     {{ __('Reactivate') }}
                                 </button>
