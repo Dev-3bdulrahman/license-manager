@@ -3,7 +3,7 @@
     "description": "License Manager is a robust PHP package designed for managing software licensing with ease and security. This package provides essential tools to validate, generate, and manage license keys, ensuring your applications are protected against unauthorized usage. With domain-based validation and secure license storage, developers can confidently implement licensing mechanisms for their applications. Seamlessly integrates with Laravel and other PHP frameworks, offering an efficient solution for protecting your software.",
     "type": "library",
     "require": {
-	"laravel/framework": "^8.0|^9.0|^10.0|^11.0",
+	"laravel/framework": "^8|^9|^10|^11",
         "guzzlehttp/guzzle": "*"
     },
     "require-dev": {
@@ -22,5 +22,6 @@
             "email": "me@3bdulrahman.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
