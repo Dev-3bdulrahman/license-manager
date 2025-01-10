@@ -2,10 +2,9 @@
 
 namespace Dev3bdulrahman\LicenseManager\Services;
 
-use Exception;
 use Carbon\Carbon;
-use Dev3bdulrahman\LicenseManager\Models\License;
 use Dev3bdulrahman\LicenseManager\Models\Customer;
+use Dev3bdulrahman\LicenseManager\Models\License;
 use Dev3bdulrahman\LicenseManager\Models\LicenseDomain;
 use Illuminate\Support\Str;
 
@@ -21,24 +20,24 @@ class LicenseManager
             if (!$license) {
                 return [
                     'valid' => false,
-                    'message' => 'Invalid license key'
+                    'message' => 'Invalid license key',
                 ];
             }
 
             if ($license->status !== 'active') {
                 return [
                     'valid' => false,
-                    'message' => 'License is ' . $license->status
+                    'message' => 'License is '.$license->status,
                 ];
             }
 
             if (Carbon::now()->isAfter($license->end_date)) {
                 $license->status = 'expired';
                 $license->save();
-                
+
                 return [
                     'valid' => false,
-                    'message' => 'License has expired'
+                    'message' => 'License has expired',
                 ];
             }
 
@@ -49,20 +48,19 @@ class LicenseManager
             if (!$isValidDomain) {
                 return [
                     'valid' => false,
-                    'message' => 'Domain not authorized for this license'
+                    'message' => 'Domain not authorized for this license',
                 ];
             }
 
             return [
                 'valid' => true,
                 'message' => 'License is valid',
-                'license' => $license->toArray()
+                'license' => $license->toArray(),
             ];
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return [
                 'valid' => false,
-                'message' => 'Error validating license: ' . $e->getMessage()
+                'message' => 'Error validating license: '.$e->getMessage(),
             ];
         }
     }
@@ -73,7 +71,7 @@ class LicenseManager
             Str::random(4),
             Str::random(4),
             Str::random(4),
-            Str::random(4)
+            Str::random(4),
         ]));
     }
 
@@ -84,7 +82,7 @@ class LicenseManager
                 ['email' => $data['email']],
                 [
                     'name' => $data['customer_name'],
-                    'phone' => $data['phone']
+                    'phone' => $data['phone'],
                 ]
             );
 
@@ -94,27 +92,26 @@ class LicenseManager
                 'type' => $data['type'],
                 'start_date' => $data['start_date'],
                 'end_date' => $data['end_date'],
-                'status' => 'active'
+                'status' => 'active',
             ]);
 
             $domains = is_array($data['domains']) ? $data['domains'] : [$data['domains']];
             foreach ($domains as $domain) {
                 LicenseDomain::create([
                     'license_id' => $license->id,
-                    'domain' => $domain
+                    'domain' => $domain,
                 ]);
             }
 
             return [
                 'success' => true,
                 'message' => 'License created successfully',
-                'license' => $license->load(['customer', 'domains'])->toArray()
+                'license' => $license->load(['customer', 'domains'])->toArray(),
             ];
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return [
                 'success' => false,
-                'message' => 'Error creating license: ' . $e->getMessage()
+                'message' => 'Error creating license: '.$e->getMessage(),
             ];
         }
     }
@@ -123,11 +120,11 @@ class LicenseManager
     {
         try {
             $license = License::where('license_key', $licenseKey)->first();
-            
+
             if (!$license) {
                 return [
                     'success' => false,
-                    'message' => 'License not found'
+                    'message' => 'License not found',
                 ];
             }
 
@@ -136,13 +133,12 @@ class LicenseManager
 
             return [
                 'success' => true,
-                'message' => 'License suspended successfully'
+                'message' => 'License suspended successfully',
             ];
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return [
                 'success' => false,
-                'message' => 'Error suspending license: ' . $e->getMessage()
+                'message' => 'Error suspending license: '.$e->getMessage(),
             ];
         }
     }

@@ -2,8 +2,8 @@
 
 namespace Dev3bdulrahman\LicenseManager;
 
-use Illuminate\Support\ServiceProvider;
 use Dev3bdulrahman\LicenseManager\Services\LicenseManager;
+use Illuminate\Support\ServiceProvider;
 
 class LicenseManagerServiceProvider extends ServiceProvider
 {
@@ -16,13 +16,19 @@ class LicenseManagerServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'license-manager');
-        
+        // تحميل الـ migrations
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        // تحميل الـ routes
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        // تحميل الـ views
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'license-manager');
+
+        // نشر الـ views والـ migrations
         $this->publishes([
-            __DIR__ . '/resources/views' => resource_path('views/vendor/license-manager'),
-            __DIR__ . '/../database/migrations' => database_path('migrations')
+            __DIR__.'/../resources/views' => resource_path('views/vendor/license-manager'),
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'license-manager');
     }
 }
