@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dev3bdulrahman\\LicenseManager\\LicenseManagerServiceProvider"
+                "Dev3bdulrahman\\LicenseManagerServiceProvider"
             ]
         }
     }
