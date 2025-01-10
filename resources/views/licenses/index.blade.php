@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Licenses</h2>
+    <h2>{{ __('Licenses') }}</h2>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLicenseModal">
-        Create License
+        {{ __('Create License') }}
     </button>
 </div>
 
@@ -13,13 +13,13 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Customer</th>
-                    <th>License Key</th>
-                    <th>Type</th>
-                    <th>Domains</th>
-                    <th>Status</th>
-                    <th>Expiry</th>
-                    <th>Actions</th>
+                    <th>{{ __('Customer') }}</th>
+                    <th>{{ __('License Key') }}</th>
+                    <th>{{ __('Type') }}</th>
+                    <th>{{ __('Domains') }}</th>
+                    <th>{{ __('Status') }}</th>
+                    <th>{{ __('Expiry') }}</th>
+                    <th>{{ __('Actions') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,14 +42,14 @@
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewLicenseModal{{ $license->id }}">
-                                View
+                                {{ __('View') }}
                             </button>
                             @if($license->status === 'active')
                             <form action="{{ route('license-manager.licenses.suspend', $license) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure you want to suspend this license?')">
-                                    Suspend
+                                <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('{{ __('Are you sure you want to suspend this license?') }}')">
+                                    {{ __('Suspend') }}
                                 </button>
                             </form>
                             @endif
@@ -69,12 +69,12 @@
             <form action="{{ route('license-manager.licenses.store') }}" method="POST">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Create License</h5>
+                    <h5 class="modal-title">{{ __('Create License') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Customer</label>
+                        <label class="form-label">{{ __('Customer') }}</label>
                         <select class="form-select" name="customer_id" required>
                             @foreach($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -82,24 +82,24 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">License Type</label>
+                        <label class="form-label">{{ __('License Type') }}</label>
                         <select class="form-select" name="type" required>
-                            <option value="single">Single Domain</option>
-                            <option value="multiple">Multiple Domains</option>
+                            <option value="single">{{ __('Single Domain') }}</option>
+                            <option value="multiple">{{ __('Multiple Domains') }}</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Domains</label>
-                        <input type="text" class="form-control" name="domains" required placeholder="Enter domains separated by commas">
+                        <label class="form-label">{{ __('Domains') }}</label>
+                        <input type="text" class="form-control" name="domains" required placeholder="{{ __('Enter domains separated by commas') }}">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">End Date</label>
+                        <label class="form-label">{{ __('End Date') }}</label>
                         <input type="date" class="form-control" name="end_date" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create License</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Create License') }}</button>
                 </div>
             </form>
         </div>

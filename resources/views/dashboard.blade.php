@@ -5,7 +5,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Total Customers</h5>
+                <h5 class="card-title">{{ __('Total Customers') }}</h5>
                 <p class="card-text display-4">{{ $totalCustomers }}</p>
             </div>
         </div>
@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Active Licenses</h5>
+                <h5 class="card-title">{{ __('Active Licenses') }}</h5>
                 <p class="card-text display-4">{{ $activeLicenses }}</p>
             </div>
         </div>
@@ -21,7 +21,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Expiring Soon</h5>
+                <h5 class="card-title">{{ __('Expiring Soon') }}</h5>
                 <p class="card-text display-4">{{ $expiringSoon }}</p>
             </div>
         </div>
@@ -32,17 +32,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                Recent Licenses
+                {{ __('Recent Licenses') }}
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Customer</th>
-                            <th>License Key</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Expiry</th>
+                            <th>{{ __('Customer') }}</th>
+                            <th>{{ __('License Key') }}</th>
+                            <th>{{ __('Type') }}</th>
+                            <th>{{ __('Status') }}</th>
+                            <th>{{ __('Expiry') }}</th>
                         </tr>
                     </thead>
                     <tbody>
