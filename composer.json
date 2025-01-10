@@ -13,7 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Dev3bdulrahman\\LicenseManager\\": "src/"
+            "Dev3bdulrahman\\LicenseManagerServiceProvider\\": "src/"
         }
     },
     "authors": [
