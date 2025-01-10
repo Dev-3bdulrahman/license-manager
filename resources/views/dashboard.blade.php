@@ -1,4 +1,3 @@
-<?php
 @extends('license-manager::layouts.app')
 
 @section('content')
