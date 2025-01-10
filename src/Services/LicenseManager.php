@@ -89,6 +89,7 @@ class LicenseManager
             $license = License::create([
                 'license_key' => $this->generateLicense(),
                 'customer_id' => $customer->id,
+                'product_id' => $data['product_id'],
                 'type' => $data['type'],
                 'start_date' => $data['start_date'],
                 'end_date' => $data['end_date'],
@@ -139,6 +140,33 @@ class LicenseManager
             return [
                 'success' => false,
                 'message' => 'Error suspending license: '.$e->getMessage(),
+            ];
+        }
+    }
+
+    public function reactivateLicense(string $licenseKey): array
+    {
+        try {
+            $license = License::where('license_key', $licenseKey)->first();
+
+            if (!$license) {
+                return [
+                    'success' => false,
+                    'message' => 'License not found',
+                ];
+            }
+
+            $license->status = 'active';
+            $license->save();
+
+            return [
+                'success' => true,
+                'message' => 'License reactivated successfully',
+            ];
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'Error reactivating license: '.$e->getMessage(),
             ];
         }
     }

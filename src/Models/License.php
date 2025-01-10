@@ -2,10 +2,10 @@
 
 namespace Dev3bdulrahman\LicenseManager\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class License extends Model
 {
@@ -14,6 +14,7 @@ class License extends Model
     protected $fillable = [
         'license_key',
         'customer_id',
+        'product_id',
         'type',
         'start_date',
         'end_date',
@@ -28,6 +29,11 @@ class License extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
     }
 
     public function domains(): HasMany

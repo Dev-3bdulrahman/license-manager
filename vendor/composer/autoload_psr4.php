@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Dev3bdulrahman\\LicenseManagerServiceProvider\\' => array($baseDir . '/src'),
+    'Dev3bdulrahman\\LicenseManager\\' => array($baseDir . '/src'),
 );
