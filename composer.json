@@ -13,7 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Dev3bdulrahman\\LicenseManagerServiceProvider\\": "src/"
+            "Dev3bdulrahman\\LicenseManager\\": "src/"
         }
     },
     "authors": [
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dev3bdulrahman\\LicenseManagerServiceProvider"
+                "Dev3bdulrahman\\LicenseManager\\LicenseManagerServiceProvider"
             ]
         }
     }
